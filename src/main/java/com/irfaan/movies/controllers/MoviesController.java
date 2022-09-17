@@ -24,18 +24,7 @@ public class MoviesController {
     public ResponseEntity<Object> findAll(
             @RequestParam String category, @RequestParam String sortMovies
     ) {
-        List<ResponseWebMovies> data = new ArrayList<>();
-        if (StringUtils.isBlank(category) && StringUtils.isBlank(sortMovies)) {
-            data = moviesService.getAllMovies();
-        }
-
-        if (!StringUtils.isBlank(category)) {
-            data = moviesService.getMoviesByCategory(category);
-        }
-
-        if (!StringUtils.isBlank(sortMovies)) {
-            moviesService.sortingMovies(data, sortMovies);
-        }
+        List<ResponseWebMovies> data = moviesService.getMoviesList(sortMovies, category);
         return ResponseEntity.ok().body(ResponseMessage.success(data));
     }
 

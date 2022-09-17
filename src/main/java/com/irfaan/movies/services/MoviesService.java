@@ -8,11 +8,5 @@ public interface MoviesService {
 
     ResponseWebMovies getMoviesById(Integer id);
 
-    List<ResponseWebMovies> getAllMovies();
-
-    List<ResponseWebMovies> getMoviesByCategory(String categoryName);
-
-    List<ResponseWebMovies> getNewMovies();
-
-    void sortingMovies(List<ResponseWebMovies> data, String sortMovies);
+    List<ResponseWebMovies> getMoviesList(String sortMovies, String category);
 }
