@@ -14,5 +14,5 @@ public interface MoviesService {
 
     List<ResponseWebMovies> getNewMovies();
 
-    void sortingMovies(String sortMovies);
+    void sortingMovies(List<ResponseWebMovies> data, String sortMovies);
 }

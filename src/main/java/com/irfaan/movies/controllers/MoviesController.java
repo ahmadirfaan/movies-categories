@@ -25,16 +25,16 @@ public class MoviesController {
             @RequestParam String category, @RequestParam String sortMovies
     ) {
         List<ResponseWebMovies> data = new ArrayList<>();
-        if(StringUtils.isBlank(category) && StringUtils.isBlank(sortMovies)) {
+        if (StringUtils.isBlank(category) && StringUtils.isBlank(sortMovies)) {
             data = moviesService.getAllMovies();
         }
 
-        if(!StringUtils.isBlank(category)) {
+        if (!StringUtils.isBlank(category)) {
             data = moviesService.getMoviesByCategory(category);
         }
 
-        if(!StringUtils.isBlank(sortMovies)) {
-            moviesService.sortingMovies(sortMovies);
+        if (!StringUtils.isBlank(sortMovies)) {
+            moviesService.sortingMovies(data, sortMovies);
         }
         return ResponseEntity.ok().body(ResponseMessage.success(data));
     }

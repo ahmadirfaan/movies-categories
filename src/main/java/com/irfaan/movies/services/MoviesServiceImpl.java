@@ -31,7 +31,7 @@ public class MoviesServiceImpl implements MoviesService {
     }
 
     @Override
-    public void sortingMovies(String sortMovies) {
+    public void sortingMovies(List<ResponseWebMovies> data, String sortMovies) {
 
     }
 }
