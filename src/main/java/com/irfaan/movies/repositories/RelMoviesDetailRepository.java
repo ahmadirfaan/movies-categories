@@ -9,5 +9,5 @@ import java.util.List;
 public interface RelMoviesDetailRepository extends JpaRepository<RelMoviesDetail, Integer> {
 
     @Query(value = "SELECT * FROM rel_movies_detail WHERE movies_id = ?1", nativeQuery = true)
-    List<RelMoviesDetail> findAllByMoviesId(String moviesId);
+    RelMoviesDetail findAllByMoviesId(Integer moviesId);
 }

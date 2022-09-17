@@ -2,6 +2,8 @@ package com.irfaan.movies.services;
 
 
 import com.irfaan.movies.entities.Movies;
+import com.irfaan.movies.entities.MoviesDetail;
+import com.irfaan.movies.entities.RelMoviesDetail;
 import com.irfaan.movies.models.ResponseWebMovies;
 import com.irfaan.movies.repositories.CategoryRepository;
 import com.irfaan.movies.repositories.MoviesRepository;
@@ -9,6 +11,7 @@ import com.irfaan.movies.repositories.RelMoviesDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,8 +34,9 @@ public class MoviesServiceImpl implements MoviesService {
         if(!movies.isPresent()) {
             return null;
         } else {
-            ResponseWebMovies responseWebMovies = new ResponseWebMovies();
-
+            Movies dataMovies = movies.get();
+            RelMoviesDetail relMoviesDetail = relMoviesDetailRepository.findAllByMoviesId(dataMovies.getId());
+            ResponseWebMovies responseWebMovies = convertToResponse(dataMovies, relMoviesDetail);
             return responseWebMovies;
 
         }
@@ -40,7 +44,22 @@ public class MoviesServiceImpl implements MoviesService {
 
     @Override
     public List<ResponseWebMovies> getAllMovies() {
-        return null;
+        List<Movies> allMovies = moviesRepository.findAll();
+        List<RelMoviesDetail> allMoviesDetails = relMoviesDetailRepository.findAll();
+        List<ResponseWebMovies> allResponse = new ArrayList<>();
+        if(!allMovies.isEmpty()) {
+            allMovies.forEach(m -> {
+
+                allMoviesDetails.forEach(almv -> {
+                    if(almv.getMovies().getId().equals(m.getId())) {
+                        ResponseWebMovies responseWebMovies = convertToResponse(m, almv);
+                        allResponse.add(responseWebMovies);
+                    }
+
+                });
+            });
+        }
+        return allResponse;
     }
 
     @Override
@@ -56,5 +75,19 @@ public class MoviesServiceImpl implements MoviesService {
     @Override
     public void sortingMovies(List<ResponseWebMovies> data, String sortMovies) {
 
+    }
+
+
+    private ResponseWebMovies convertToResponse(Movies m, RelMoviesDetail almv) {
+        ResponseWebMovies responseWebMovies = new ResponseWebMovies();
+        responseWebMovies.setCategory(m.getCategory().getName());
+        responseWebMovies.setTitle(m.getTitle());
+        responseWebMovies.setReleaseYear(m.getReleaseYear());
+        MoviesDetail moviesDetail = almv.getMoviesDetail();
+        responseWebMovies.setDownloadable(moviesDetail.isDownloadable());
+        responseWebMovies.setShareable(moviesDetail.isShareAble());
+        responseWebMovies.setRating(String.valueOf(moviesDetail.getRating()));
+        responseWebMovies.setDescription(moviesDetail.getDetailDescription());
+        return responseWebMovies;
     }
 }
