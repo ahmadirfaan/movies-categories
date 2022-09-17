@@ -8,11 +8,9 @@ public class RelMoviesDetail extends AbstractEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
     @JoinColumn(name = "movies_id", nullable = false)
     private Movies movies;
 
-    @ManyToOne
     @JoinColumn(name = "movies_detail_id", nullable = false)
     private MoviesDetail moviesDetail;
 

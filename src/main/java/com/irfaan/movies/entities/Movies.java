@@ -16,7 +16,6 @@ public class Movies extends AbstractEntity<Integer> {
     @Column(name = "release_year", nullable = false)
     private String releaseYear;
 
-    @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
