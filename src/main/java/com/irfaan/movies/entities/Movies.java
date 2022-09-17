@@ -13,6 +13,9 @@ public class Movies extends AbstractEntity<Integer> {
     @Column(length = 500, unique = true, nullable = false)
     private String title;
 
+    @Column(name = "release_year", nullable = false)
+    private String releaseYear;
+
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
@@ -43,11 +46,20 @@ public class Movies extends AbstractEntity<Integer> {
         this.category = category;
     }
 
+    public String getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(String releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
     @Override
     public String toString() {
         return "Movies{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", releaseYear='" + releaseYear + '\'' +
                 ", category=" + category +
                 '}';
     }

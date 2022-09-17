@@ -6,6 +6,8 @@ public class ResponseWebMovies {
 
     private String description;
 
+    private String releaseYear;
+
     private String rating;
 
     private String category;
@@ -62,11 +64,20 @@ public class ResponseWebMovies {
         isDownloadable = downloadable;
     }
 
+    public String getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(String releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
     @Override
     public String toString() {
         return "ResponseWebMovies{" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", releaseYear='" + releaseYear + '\'' +
                 ", rating='" + rating + '\'' +
                 ", category='" + category + '\'' +
                 ", isShareable=" + isShareable +

@@ -28,6 +28,7 @@ dengan menggunakan POSTMAN maka didapatkan hasil-nya sebagai berikut :
             "description": "Lorem Ipsum Dolor",
             "category": "comedy",
             "rating": "7.9",
+            "releaseYear": "2022",
             "isShareable": false,
             "isDownloadable": false
         },
@@ -36,6 +37,7 @@ dengan menggunakan POSTMAN maka didapatkan hasil-nya sebagai berikut :
             "description": "Lorem Ipsum Dolor",
             "category": "love",
             "rating": "7.9",
+            "releaseYear": "2018",
             "isShareable": false,
             "isDownloadable": false
         },
@@ -45,6 +47,7 @@ dengan menggunakan POSTMAN maka didapatkan hasil-nya sebagai berikut :
             "category": "comedy",
             "rating": "7.9",
             "isShareable": false,
+            "releaseYear": "2022",
             "isDownloadable": false
         },
         {
@@ -52,6 +55,7 @@ dengan menggunakan POSTMAN maka didapatkan hasil-nya sebagai berikut :
             "description": "Lorem Ipsum Dolor",
             "category": "horor",
             "rating": "7.9",
+            "releaseYear": "2021",
             "isShareable": false,
             "isDownloadable": false
         },
