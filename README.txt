@@ -11,6 +11,10 @@ Mendapatkan semua movies berdasarkan category : GET http://{{baseURL}}/movies?ca
 
 Mendapatkan semua movies berdasarkan kategory dan sorting oldes/newst : GET http://{{baseURL}}/movies?category=action&category=newest
 
+kata kunci untuk sorting dengan newest movies adalah = newest;
+
+kata kunci untuk sorting dengan oldest movies adalah = oldest;
+
 Mendapatkan movies berdasarkan id : GET http://{{baseURL}}/movies/{id}
 
 dengan menggunakan POSTMAN maka didapatkan hasil-nya sebagai berikut :
